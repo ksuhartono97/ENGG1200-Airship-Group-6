@@ -1,8 +1,13 @@
+#include <SoftwareSerial.h>
+//SoftwareSerial debug(0,1);
+
 // Libraries
-#include <communication.h>
+//#include <communication.h>
 #include <motor_control.h>
 #include <BT_timer.h>
 #include <SimpleTimer.h>
+
+String data = "";
 
 /*NOTE: Notice that throughout this code there are
         references to timers. These are safety functions
@@ -12,75 +17,63 @@
 
 
 void setup(){  
-  comm_init();                     // To initiate the bluetooth communication function.  
+  //comm_init();                     // To initiate the bluetooth communication function.  
   motor_control_init();       // To initiate the motor control (mapping pins and handling direction).
   timer_init();         // To initiate the bluetooth connection protection timer
+  Serial.begin(115200);
+  //debug.begin(115200);
 }
 
 void loop(){
   timerRun();             // Keep the timer running
-} 
-
-void execute_cmd(int index, int value){   // Function to receive parameters from the Android apps
-
-  if(index>=0 && index<6){            // Check if the index value (motor number 0-5) is available                    
-    motor_start(index, value);            // If yes, start the indexed motor with given power value (-255 255)  
-  }  
-  else if(index == 7){                          // Android app will send a signal to this Arduino program for every one second
-    startTimer();                               // Restart the timer
-  } 
-  else if(index == 8){
-    stop_all();
-  }
-  else if(index >=9 && index <=16){
-    switch(index){
-      case 9: //Forward
-      motor_start(0, value);
-      motor_start(3, value);
-      motor_start(4, value);
-      motor_start(5, value);
-      break;
-      case 10: //Backward
-      motor_start(0, value);
-      motor_start(3, -value);
-      motor_start(4, value);
-      motor_start(5, value);
-      break;
-      case 11: //Left
-      motor_start(0, value);
-      motor_start(5, value);
-      motor_start(3, -value);
-      motor_start(4, -value);
-      break;
-      case 12: //Right
-      motor_start(0, -value);
-      motor_start(5, -value);
-      motor_start(3, value);
-      motor_start(4, value);
-      break;
-      case 13: //Elev Up
-      motor_start(1, value);
-      motor_start(2, -value);
-      break;
-      case 14: //Elev Down
-      motor_start(1, -value);
-      motor_start(2, value);
-      break;
-      case 15: // CW
-      motor_start(0, value);
-      motor_start(5, -value);
-      motor_start(3, value);
-      motor_start(4, -value);
-      break;
-      case 16: //CCW
-      motor_start(0, -value);
-      motor_start(5, value);
-      motor_start(3, -value);
-      motor_start(4, value);
-      break;
+  if(Serial.available()){
+    char c = Serial.read();
+    if(c == '\n'){
+       handleCommand(data);
+       data ="";
+    }
+    else{
+      data += c;
     }
   }
-  else{   
-    stop_all();                             // Stop all the motors.  
+} 
+
+void handleCommand(String cmd) {
+  String cmdBuffer[100] = {};
+    int appendIndex = 0;
+    while (cmd.indexOf(",") != -1) {
+       cmdBuffer[appendIndex++] = cmd.substring(0, cmd.indexOf(","));
+       cmd = cmd.substring(cmd.indexOf(",")+1, cmd.length());
+    }
+//    Serial.println("Index: " + appendIndex);
+//    for(int i = 0; i<=appendIndex; i++){
+//      Serial.println(cmdBuffer[i]);
+//    }
+  if(cmdBuffer[0].equals("PING") && appendIndex == 2){
+    startTimer();
+  }
+  else if(cmdBuffer[0].equals("MOTOR_CONTROL")&& appendIndex == 7){
+    for(int i = 0; i < 6; i++){
+      motor_start(i, cmdBuffer[i+1].toInt());
+    }
+  }
+  else if(cmdBuffer[0].equals("STOP") && appendIndex == 2){
+    stop_all();
   }
 }
+
+//void execute_cmd(int index, int value){   // Function to receive parameters from the Android apps
+//
+//  if(index>=0 && index<6){            // Check if the index value (motor number 0-5) is available                    
+//    motor_start(index, value);            // If yes, start the indexed motor with given power value (-255 255)  
+//  }  
+//  else if(index == 7){                          // Android app will send a signal to this Arduino program for every one second
+//    startTimer();                               // Restart the timer
+//  } 
+//  else if(index == 8){
+//    stop_all();
+//  }
+//  else{   
+//    stop_all();                             // Stop all the motors.  
+//  }
+//}
