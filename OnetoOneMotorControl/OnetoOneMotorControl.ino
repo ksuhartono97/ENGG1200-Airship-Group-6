@@ -8,6 +8,7 @@
 #include <SimpleTimer.h>
 
 String data = "";
+int ctr = 0;
 
 /*NOTE: Notice that throughout this code there are
         references to timers. These are safety functions
@@ -19,13 +20,20 @@ String data = "";
 void setup(){  
   //comm_init();                     // To initiate the bluetooth communication function.  
   motor_control_init();       // To initiate the motor control (mapping pins and handling direction).
-  timer_init();         // To initiate the bluetooth connection protection timer
+//  timer_init();         // To initiate the bluetooth connection protection timer
   Serial.begin(115200);
+//  motor_start(2,255);
   //debug.begin(115200);
 }
 
 void loop(){
-  timerRun();             // Keep the timer running
+//  timerRun();             // Keep the timer running
+  if(ctr < 100000){
+    ctr++;
+  }
+  else {
+    terminate();
+  }
   if(Serial.available()){
     char c = Serial.read();
     if(c == '\n'){
@@ -50,7 +58,8 @@ void handleCommand(String cmd) {
 //      Serial.println(cmdBuffer[i]);
 //    }
   if(cmdBuffer[0].equals("PING") && appendIndex == 2){
-    startTimer();
+//    startTimer();
+    ctr = 0;
   }
   else if(cmdBuffer[0].equals("MOTOR_CONTROL")&& appendIndex == 7){
     for(int i = 0; i < 6; i++){

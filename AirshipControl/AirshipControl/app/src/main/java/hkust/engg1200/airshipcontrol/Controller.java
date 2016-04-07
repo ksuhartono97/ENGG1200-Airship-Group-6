@@ -227,6 +227,18 @@ public class Controller {
         for (int i = 0; i < motorValues.length; i++) data[i] = (int) (motorValues[i] * ratio);
         SendCmd("MOTOR_CONTROL", data);
     }
+    public void sendHoverMotorCmd(int[] motorValues, float ratio){
+        Object[] data = new Object[motorValues.length];
+        for (int i = 0; i < motorValues.length; i++) {
+            if(i ==1 || i == 2) {
+                data[i] = motorValues[i];
+            }
+            else {
+                data[i] = (int) (motorValues[i] * ratio);
+            }
+        }
+        SendCmd("MOTOR_CONTROL", data);
+    }
 
     // either turn on/off switch 1 or 2
     public void SwitchChange(int index, int state) {
