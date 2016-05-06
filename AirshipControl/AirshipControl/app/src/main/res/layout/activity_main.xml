@@ -28,7 +28,7 @@
         android:layout_above="@+id/txtStatus"
         android:layout_centerHorizontal="true"
         android:background="@null"
-        android:src="@drawable/stop_sign" />
+        android:src="@drawable/tomato" />
 
     <Switch
         android:id="@+id/swConn"
@@ -91,7 +91,7 @@
         android:id="@+id/fwdBtn"
         android:layout_marginTop="42dp"
         android:layout_marginLeft="47dp"
-        android:src="@drawable/forward"
+        android:src="@drawable/uppointer"
         android:background="@null"
         android:paddingStart="8dp"
         android:layout_below="@+id/seekBarMotorSpeedElev"
@@ -101,7 +101,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/backBtn"
-        android:src="@drawable/backward"
+        android:src="@drawable/downpointer"
         android:background="@null"
         android:paddingStart="8dp"
         android:layout_alignTop="@+id/leftBtn"
@@ -114,7 +114,7 @@
         android:layout_below="@+id/fwdBtn"
         android:layout_toLeftOf="@+id/backBtn"
         android:layout_toStartOf="@+id/backBtn"
-        android:src="@drawable/left"
+        android:src="@drawable/leftpointer"
         android:background="@null" />
 
     <ImageButton
@@ -122,7 +122,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/rightBtn"
         android:background="@null"
-        android:src="@drawable/right"
+        android:src="@drawable/rightpointer"
         android:paddingStart="8dp"
         android:layout_alignTop="@+id/backBtn"
         android:layout_toEndOf="@+id/backBtn" />
@@ -134,7 +134,7 @@
         android:layout_above="@+id/rightBtn"
         android:layout_alignRight="@+id/linearLayout1"
         android:layout_alignEnd="@+id/linearLayout1"
-        android:src="@drawable/up"
+        android:src="@drawable/elevup"
         android:scaleType="matrix"
         android:background="@null" />
 
@@ -146,7 +146,7 @@
         android:layout_alignRight="@+id/elevUpBtn"
         android:layout_alignEnd="@+id/elevUpBtn"
         android:background="@null"
-        android:src="@drawable/down" />
+        android:src="@drawable/elevdown" />
 
     <TextView
         android:layout_width="wrap_content"

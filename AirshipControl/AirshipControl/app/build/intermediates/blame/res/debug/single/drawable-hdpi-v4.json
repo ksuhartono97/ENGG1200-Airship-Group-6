@@ -8,12 +8,28 @@
         "source": "D:\\Data\\Documents\\GitHub\\ENGG1200-Airship-Group-6\\AirshipControl\\AirshipControl\\app\\src\\main\\res\\drawable-hdpi\\ic_launcher.png"
     },
     {
+        "merged": "D:\\Data\\Documents\\GitHub\\ENGG1200-Airship-Group-6\\AirshipControl\\AirshipControl\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\leftpointer.png",
+        "source": "D:\\Data\\Documents\\GitHub\\ENGG1200-Airship-Group-6\\AirshipControl\\AirshipControl\\app\\src\\main\\res\\drawable-hdpi\\leftpointer.png"
+    },
+    {
         "merged": "D:\\Data\\Documents\\GitHub\\ENGG1200-Airship-Group-6\\AirshipControl\\AirshipControl\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\right.png",
         "source": "D:\\Data\\Documents\\GitHub\\ENGG1200-Airship-Group-6\\AirshipControl\\AirshipControl\\app\\src\\main\\res\\drawable-hdpi\\right.png"
     },
     {
         "merged": "D:\\Data\\Documents\\GitHub\\ENGG1200-Airship-Group-6\\AirshipControl\\AirshipControl\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\stop_sign.png",
         "source": "D:\\Data\\Documents\\GitHub\\ENGG1200-Airship-Group-6\\AirshipControl\\AirshipControl\\app\\src\\main\\res\\drawable-hdpi\\stop_sign.png"
+    },
+    {
+        "merged": "D:\\Data\\Documents\\GitHub\\ENGG1200-Airship-Group-6\\AirshipControl\\AirshipControl\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\tomato.png",
+        "source": "D:\\Data\\Documents\\GitHub\\ENGG1200-Airship-Group-6\\AirshipControl\\AirshipControl\\app\\src\\main\\res\\drawable-hdpi\\tomato.png"
+    },
+    {
+        "merged": "D:\\Data\\Documents\\GitHub\\ENGG1200-Airship-Group-6\\AirshipControl\\AirshipControl\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\uppointer.png",
+        "source": "D:\\Data\\Documents\\GitHub\\ENGG1200-Airship-Group-6\\AirshipControl\\AirshipControl\\app\\src\\main\\res\\drawable-hdpi\\uppointer.png"
+    },
+    {
+        "merged": "D:\\Data\\Documents\\GitHub\\ENGG1200-Airship-Group-6\\AirshipControl\\AirshipControl\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\rightpointer.png",
+        "source": "D:\\Data\\Documents\\GitHub\\ENGG1200-Airship-Group-6\\AirshipControl\\AirshipControl\\app\\src\\main\\res\\drawable-hdpi\\rightpointer.png"
     },
     {
         "merged": "D:\\Data\\Documents\\GitHub\\ENGG1200-Airship-Group-6\\AirshipControl\\AirshipControl\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\backward.png",
@@ -24,8 +40,20 @@
         "source": "D:\\Data\\Documents\\GitHub\\ENGG1200-Airship-Group-6\\AirshipControl\\AirshipControl\\app\\src\\main\\res\\drawable-hdpi\\cw.png"
     },
     {
+        "merged": "D:\\Data\\Documents\\GitHub\\ENGG1200-Airship-Group-6\\AirshipControl\\AirshipControl\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\elevdown.png",
+        "source": "D:\\Data\\Documents\\GitHub\\ENGG1200-Airship-Group-6\\AirshipControl\\AirshipControl\\app\\src\\main\\res\\drawable-hdpi\\elevdown.png"
+    },
+    {
         "merged": "D:\\Data\\Documents\\GitHub\\ENGG1200-Airship-Group-6\\AirshipControl\\AirshipControl\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ccw.png",
         "source": "D:\\Data\\Documents\\GitHub\\ENGG1200-Airship-Group-6\\AirshipControl\\AirshipControl\\app\\src\\main\\res\\drawable-hdpi\\ccw.png"
+    },
+    {
+        "merged": "D:\\Data\\Documents\\GitHub\\ENGG1200-Airship-Group-6\\AirshipControl\\AirshipControl\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\elevup.png",
+        "source": "D:\\Data\\Documents\\GitHub\\ENGG1200-Airship-Group-6\\AirshipControl\\AirshipControl\\app\\src\\main\\res\\drawable-hdpi\\elevup.png"
+    },
+    {
+        "merged": "D:\\Data\\Documents\\GitHub\\ENGG1200-Airship-Group-6\\AirshipControl\\AirshipControl\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\downpointer.png",
+        "source": "D:\\Data\\Documents\\GitHub\\ENGG1200-Airship-Group-6\\AirshipControl\\AirshipControl\\app\\src\\main\\res\\drawable-hdpi\\downpointer.png"
     },
     {
         "merged": "D:\\Data\\Documents\\GitHub\\ENGG1200-Airship-Group-6\\AirshipControl\\AirshipControl\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\forward.png",
