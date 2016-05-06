@@ -89,13 +89,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/fwdBtn"
-        android:layout_marginTop="91dp"
+        android:layout_marginTop="42dp"
         android:layout_marginLeft="47dp"
         android:src="@drawable/forward"
         android:background="@null"
-        android:layout_below="@+id/linearLayout1"
-        android:layout_toStartOf="@+id/rightBtn"
-        android:paddingStart="8dp" />
+        android:paddingStart="8dp"
+        android:layout_below="@+id/seekBarMotorSpeedElev"
+        android:layout_toStartOf="@+id/rightBtn" />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -103,9 +103,9 @@
         android:id="@+id/backBtn"
         android:src="@drawable/backward"
         android:background="@null"
+        android:paddingStart="8dp"
         android:layout_alignTop="@+id/leftBtn"
-        android:layout_toStartOf="@+id/rightBtn"
-        android:paddingStart="8dp" />
+        android:layout_alignEnd="@+id/directional" />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -123,9 +123,9 @@
         android:id="@+id/rightBtn"
         android:background="@null"
         android:src="@drawable/right"
+        android:paddingStart="8dp"
         android:layout_alignTop="@+id/backBtn"
-        android:layout_alignStart="@+id/btnStop"
-        android:paddingStart="8dp" />
+        android:layout_toEndOf="@+id/backBtn" />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -153,8 +153,9 @@
         android:layout_height="wrap_content"
         android:text="Directional Control"
         android:id="@+id/directional"
-        android:layout_alignTop="@+id/elevation"
-        android:layout_alignEnd="@+id/btnStop" />
+        android:layout_marginStart="62dp"
+        android:layout_above="@+id/elevation"
+        android:layout_alignStart="@+id/seekBarMotorSpeedElev" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -168,9 +169,9 @@
         android:id="@+id/seekBarMotorSpeedElev"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/directional"
-        android:layout_alignParentEnd="true"
-        android:indeterminate="false" />
+        android:indeterminate="false"
+        android:layout_below="@+id/upSpeed"
+        android:layout_alignStart="@+id/upSpeed" />
 
     <TextView
         android:id="@+id/upSpeed"
@@ -179,7 +180,25 @@
         android:gravity="center"
         android:text="Upward Motor Speed"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_above="@+id/seekBarMotorSpeedElev"
+        android:layout_below="@+id/linearLayout1"
+        android:layout_alignStart="@+id/linearLayout1" />
+
+    <SeekBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/seekBarHover"
+        android:layout_above="@+id/btnStop"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/txtStatus"
+        android:indeterminate="false" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Hover Motor Speed"
+        android:id="@+id/textView"
+        android:layout_above="@+id/seekBarHover"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

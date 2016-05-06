@@ -48,7 +48,7 @@ public class MainActivity extends Activity implements OnClickListener, OnChecked
     // you need to get the motor number, add 1 to this variable.
     int currentMotorIndex;
 
-    SeekBar mseekBarMotorSpeed, mseekBarMotorElev;
+    SeekBar mseekBarMotorSpeed, mseekBarMotorElev, mseekBarMotorHover;
 
     // The maximum and minimum speeds of the motors. This is used to set the range of
     // the seek bar (from -MAX_DUTY_CYCLE to +MAX_DUTY_CYCLE). The whole range of the
@@ -58,7 +58,7 @@ public class MainActivity extends Activity implements OnClickListener, OnChecked
     final int MIN_DUTY_CYCLE = 0;
     final int MAX_DUTY_CYCLE = 255;
 
-    int motorVel = 0, elevMotorVel = 0;
+    int motorVel = 0, elevMotorVel = 0, hoverMotorVel = 0;
 
     // This array keeps track of the seekbar position for each motor
     // set this value in the onProgressChanged() method of the seekbar
@@ -74,8 +74,8 @@ public class MainActivity extends Activity implements OnClickListener, OnChecked
     int[] motorDownValues = {200, -135, -135, -175, 200, 180};
     int[] motorLeftValues = {-200, -135, -135, -0, 200, 0};
     int[] motorRightValues = {-0, -135, -135, -200, 0, 200};
-    int[] motorElevUpValues = {0, -200, -200, 0, 0, 0};
-    int[] motorElevDownValues = {0, 200, 200, 0, 0, 0};
+    int[] motorElevUpValues = {0, 0, -200, -200, -200, 0};
+    int[] motorElevDownValues = {0, 0, 200, 200, 200, 0};
     int[] hoverValues = {0, -135, -135, 0, 0, 0};
 
     TextView mspeedMin, mspeedMax;
@@ -204,7 +204,7 @@ public class MainActivity extends Activity implements OnClickListener, OnChecked
         // Thus the seek bar position goes from 0 .. 2*MAX_DUTY_CYCLE
         mseekBarMotorSpeed = (SeekBar) findViewById(R.id.seekBarMotorSpeed);
         mseekBarMotorSpeed.setEnabled(false);
-        mseekBarMotorSpeed.setMax(MAX_DUTY_CYCLE);
+        mseekBarMotorSpeed.setMax(150);
         mseekBarMotorSpeed.setProgress(0);
         mseekBarMotorSpeed.setOnSeekBarChangeListener(this);
 
@@ -213,6 +213,12 @@ public class MainActivity extends Activity implements OnClickListener, OnChecked
         mseekBarMotorElev.setMax(MAX_DUTY_CYCLE);
         mseekBarMotorElev.setProgress(0);
         mseekBarMotorElev.setOnSeekBarChangeListener(this);
+
+        mseekBarMotorHover = (SeekBar) findViewById(R.id.seekBarHover);
+        mseekBarMotorHover.setEnabled(false);
+        mseekBarMotorHover.setMax(MAX_DUTY_CYCLE);
+        mseekBarMotorHover.setProgress(0);
+        mseekBarMotorHover.setOnSeekBarChangeListener(this);
 
         // These three textviews are used to show the scale indicator below the seekbar
         mspeedMin = (TextView) findViewById(R.id.speedMin);
@@ -268,27 +274,32 @@ public class MainActivity extends Activity implements OnClickListener, OnChecked
                     break;
                 case R.id.fwdBtn:
                     mtxtStatus.setText("Forward");
-                    controller.sendHoverMotorCmd(motorUpValues, motorVel / 255f);
+                    controller.calculateMotorValues(motorVel, 90, false, elevMotorVel, false, hoverMotorVel);
                     break;
                 case R.id.backBtn:
                     mtxtStatus.setText("Backward");
-                    controller.sendHoverMotorCmd(motorDownValues, motorVel / 255f);
+                    controller.calculateMotorValues(motorVel, 270, false, elevMotorVel, false, hoverMotorVel);
+                    //controller.sendHoverMotorCmd(motorDownValues, motorVel / 255f);
                     break;
                 case R.id.leftBtn:
                     mtxtStatus.setText("Left");
-                    controller.sendHoverMotorCmd(motorLeftValues, motorVel / 255f);
+                    controller.calculateMotorValues(motorVel, 180, false, elevMotorVel, false, hoverMotorVel);
+                    //controller.sendHoverMotorCmd(motorLeftValues, motorVel / 255f);
                     break;
                 case R.id.rightBtn:
                     mtxtStatus.setText("Right");
-                    controller.sendHoverMotorCmd(motorRightValues, motorVel / 255f);
+                    controller.calculateMotorValues(motorVel, 0 ,false, elevMotorVel, false, hoverMotorVel);
+                    //controller.sendHoverMotorCmd(motorRightValues, motorVel / 255f);
                     break;
                 case R.id.elevUpBtn:
                     mtxtStatus.setText("Up");
-                    controller.sendMotorCmd(motorElevUpValues, elevMotorVel / 255f);
+                    controller.calculateMotorValues(motorVel, 0 , true, elevMotorVel, false, hoverMotorVel);
+                    //controller.sendMotorCmd(motorElevUpValues, elevMotorVel / 255f);
                     break;
                 case R.id.elevDownBtn:
                     mtxtStatus.setText("Down");
-                    controller.sendMotorCmd(motorElevDownValues, elevMotorVel / 255f);
+                    controller.calculateMotorValues(motorVel, 1 , true, elevMotorVel, false, hoverMotorVel);
+                    //controller.sendMotorCmd(motorElevDownValues, elevMotorVel / 255f);
                     break;
 
                 default:
@@ -297,7 +308,8 @@ public class MainActivity extends Activity implements OnClickListener, OnChecked
 
         } else if (event.getAction() == MotionEvent.ACTION_UP && v.getId() != R.id.btnStop) {
             mtxtStatus.setText("Hover");
-            controller.sendMotorCmd(hoverValues, 1);
+            controller.calculateMotorValues(0,0,true, 200, true, hoverMotorVel);
+            //controller.sendMotorCmd(hoverValues, 1);
 //            controller.AllStop();
         }
         return false;
@@ -333,6 +345,7 @@ public class MainActivity extends Activity implements OnClickListener, OnChecked
 //                    mspMotor.setEnabled(true);
                     mseekBarMotorSpeed.setEnabled(true);
                     mseekBarMotorElev.setEnabled(true);
+                    mseekBarMotorHover.setEnabled(true);
 
                 }
 
@@ -375,6 +388,7 @@ public class MainActivity extends Activity implements OnClickListener, OnChecked
 //                    mspMotor.setEnabled(true);
                     mseekBarMotorSpeed.setEnabled(false);
                     mseekBarMotorElev.setEnabled(false);
+                    mseekBarMotorHover.setEnabled(false);
 
                 }
 
@@ -427,6 +441,11 @@ public class MainActivity extends Activity implements OnClickListener, OnChecked
             case R.id.seekBarMotorSpeedElev:
                 elevMotorVel = progress;
                 mtxtStatus.setText("Elevation motor speed set to " + progress);
+                break;
+            case R.id.seekBarHover:
+                hoverMotorVel = progress;
+                mtxtStatus.setText("Hover motor speed set to " + progress);
+                controller.calculateMotorValues(0,0,true, 200, true, hoverMotorVel);
                 break;
         }
 //        mtxtStatus.setText("Motor " + (currentMotorIndex + 1) + "'s Speed set to " + (progress));

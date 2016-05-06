@@ -240,11 +240,60 @@ public class Controller {
         SendCmd("MOTOR_CONTROL", data);
     }
 
+    public void calculateMotorValues(int targetVal, int targetAngle, boolean elev, int elevMotorVel, boolean hover, int hoverMotorVel) {
+        double radAngle = targetAngle * Math.PI / 180;
+        double tempM1,tempM2,tempM3;
+        int M1,M2,M3, UP1, UP2, UP3;
+        if(!elev) {
+            tempM1 = -(targetVal * Math.sin(radAngle));
+            tempM2 = (targetVal * (-1*Math.cos(radAngle)/2 + Math.sqrt(3)*Math.sin(radAngle)/2));
+            tempM3 = (targetVal * (-1*Math.cos(radAngle)/2 - Math.sqrt(3)*Math.sin(radAngle)/2));
+            M1 = (int)Math.floor(tempM1);
+            M2 = (int)Math.floor(tempM2);
+            M3 = (int)Math.floor(tempM3);
+            UP1 = hoverMotorVel;
+            UP2 = hoverMotorVel;
+            UP3 = hoverMotorVel;
+        }
+        else {
+            M1 = M2 = M3 = 0;
+            if(hover){
+                UP1 = hoverMotorVel;
+                UP2 = hoverMotorVel;
+                UP3 = hoverMotorVel;
+            }
+            else{
+                if(targetAngle == 0) {
+                    UP1 = elevMotorVel;
+                    UP2 = elevMotorVel;
+                    UP3 = elevMotorVel;
+                }
+                else {
+                    UP1 = -elevMotorVel;
+                    UP2 = -elevMotorVel;
+                    UP3 = -elevMotorVel;
+                }
+            }
+
+        }
+        System.out.println(M1 + " "+ M2 + " " + M3);
+        SendCmd("MOTOR_CONTROL", clamp(M1, -150, 150), clamp(M3, -150,150), UP1, UP2, -UP3, clamp(M2,-150,150));
+    }
+
     // either turn on/off switch 1 or 2
     public void SwitchChange(int index, int state) {
         if (index == SWITCH1 || index == SWITCH2) {
             if (state == ON || state == OFF)
                 SendCmd("BLUETOOTH", 0);
         }
+    }
+    public int clamp (int val, int min, int max){
+        if(val< min){
+            val = min;
+        }
+        else if (val > max){
+            val = max;
+        }
+        return val;
     }
 }

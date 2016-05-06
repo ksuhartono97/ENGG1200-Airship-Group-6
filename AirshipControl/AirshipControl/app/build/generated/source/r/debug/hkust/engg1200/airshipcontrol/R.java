@@ -27,7 +27,7 @@ public final class R {
         public static final int up=0x7f020009;
     }
     public static final class id {
-        public static final int action_settings=0x7f080012;
+        public static final int action_settings=0x7f080014;
         public static final int backBtn=0x7f08000a;
         public static final int btnStop=0x7f080001;
         public static final int directional=0x7f08000e;
@@ -38,11 +38,13 @@ public final class R {
         public static final int leftBtn=0x7f08000b;
         public static final int linearLayout1=0x7f080005;
         public static final int rightBtn=0x7f080009;
+        public static final int seekBarHover=0x7f080012;
         public static final int seekBarMotorSpeed=0x7f080004;
         public static final int seekBarMotorSpeedElev=0x7f080010;
         public static final int speedMax=0x7f080007;
         public static final int speedMin=0x7f080006;
         public static final int swConn=0x7f080002;
+        public static final int textView=0x7f080013;
         public static final int txtMotorSpeed=0x7f080003;
         public static final int txtStatus=0x7f080000;
         public static final int upSpeed=0x7f080011;

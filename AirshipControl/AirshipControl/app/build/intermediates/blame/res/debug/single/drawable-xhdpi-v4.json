@@ -32,11 +32,11 @@
         "source": "D:\\Data\\Documents\\GitHub\\ENGG1200-Airship-Group-6\\AirshipControl\\AirshipControl\\app\\src\\main\\res\\drawable-xhdpi\\backward.png"
     },
     {
-        "merged": "D:\\Data\\Documents\\GitHub\\ENGG1200-Airship-Group-6\\AirshipControl\\AirshipControl\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\cw.png",
-        "source": "D:\\Data\\Documents\\GitHub\\ENGG1200-Airship-Group-6\\AirshipControl\\AirshipControl\\app\\src\\main\\res\\drawable-xhdpi\\cw.png"
-    },
-    {
         "merged": "D:\\Data\\Documents\\GitHub\\ENGG1200-Airship-Group-6\\AirshipControl\\AirshipControl\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\forward.png",
         "source": "D:\\Data\\Documents\\GitHub\\ENGG1200-Airship-Group-6\\AirshipControl\\AirshipControl\\app\\src\\main\\res\\drawable-xhdpi\\forward.png"
+    },
+    {
+        "merged": "D:\\Data\\Documents\\GitHub\\ENGG1200-Airship-Group-6\\AirshipControl\\AirshipControl\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\cw.png",
+        "source": "D:\\Data\\Documents\\GitHub\\ENGG1200-Airship-Group-6\\AirshipControl\\AirshipControl\\app\\src\\main\\res\\drawable-xhdpi\\cw.png"
     }
 ]

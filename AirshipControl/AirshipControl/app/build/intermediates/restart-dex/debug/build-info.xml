@@ -4,26 +4,26 @@
     api-level="19"
     density="hdpi"
     format="7"
-    timestamp="319559083028228" >
+    timestamp="213838354217155" >
 
     <task
         name="javac"
-        duration="196" />
+        duration="271" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="33" />
+        duration="49" />
     <task
         name="verifier"
-        duration="10" />
+        duration="29" />
 
     <artifact
         location="D:\Data\Documents\GitHub\ENGG1200-Airship-Group-6\AirshipControl\AirshipControl\app\build\outputs\apk\app-debug.apk"
         type="MAIN" />
 
-    <build timestamp="319559083028228" >
+    <build timestamp="213838354217155" >
         <artifact
             location="D:\Data\Documents\GitHub\ENGG1200-Airship-Group-6\AirshipControl\AirshipControl\app\build\outputs\apk\app-debug.apk"
             type="MAIN" />
